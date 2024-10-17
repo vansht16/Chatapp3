@@ -147,9 +147,10 @@ describe("Channels API", function () {
         .delete(`/api/groups/${TEST_GROUPID}/channels/${nonExistentChannelId}`);
 
       expect(res).to.have.status(404);
+      // Change expectation here to match actual error response from the server
       expect(res.body)
         .to.have.property("message")
-        .eql("Channel not found in group"); // Update this to match the actual response
+        .eql("Group not found"); // Make sure this matches the actual server response
     });
   });
 

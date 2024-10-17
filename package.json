@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test-channel": "mocha ./integrationTest/test-channel.js",
     "test-group": "mocha ./integrationTest/test-group.js",
+    "test-backend": "mocha ./integrationTest/test-channel.js ./integrationTest/test-group.js ./integrationTest/test-user.js",
     "test-user": "mocha ./integrationTest/test-user.js"
   },
   "private": true,
