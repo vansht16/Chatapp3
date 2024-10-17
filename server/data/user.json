@@ -1,0 +1,51 @@
+[
+  {
+    "id": "user-001",
+    "username": "admin",
+    "email": "admin@admin.com",
+    "password": "123",
+    "roles": [
+      "Super Admin"
+    ],
+    "profile_img_path": "profile_image_user-001.jpeg",
+    "groups": [
+      "group-assignment-001",
+      "group-kbkhbvi7rwb",
+      "group-iyzfqw1jjzf"
+    ],
+    "interest_groups": [
+      "group-plo2i173ot",
+      "group-vht97jcuqy8"
+    ],
+    "channels": [
+      "670bdbd471cd0516483d97fc",
+      "6711133da7ca6a3e7ffb5743",
+      "6711315ba7ca6a3e7ffb574a"
+    ],
+    "interest_channels": [],
+    "banned_channels": [],
+    "reported_in_groups": []
+  },
+  {
+    "id": "user-zvmfzwrcx7p",
+    "username": "vansh",
+    "email": "",
+    "password": "123",
+    "profile_img_path": "",
+    "roles": [
+      "Chat User"
+    ],
+    "groups": [
+      "group-kbkhbvi7rwb",
+      "group-iyzfqw1jjzf"
+    ],
+    "interest_groups": [],
+    "channels": [
+      "6711133da7ca6a3e7ffb5743",
+      "6711315ba7ca6a3e7ffb574a"
+    ],
+    "interest_channels": [],
+    "banned_channels": [],
+    "reported_in_groups": []
+  }
+]

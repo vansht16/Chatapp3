@@ -1,0 +1,50 @@
+<div class="container py-5 d-flex justify-content-center align-items-center p-0">
+  <div
+    class="card text-black"
+    style="
+      background-color: rgb(170, 170, 170);
+      border-radius: 1rem;
+      width: 100%;
+      max-width: 1200px;
+      border: none;
+      overflow: hidden;
+    "
+  >
+    <div class="card-body p-4 overflow-auto" style="height: 80vh">
+      <h3 class="text-center mb-4">Admin Dashboard</h3>
+
+      <!-- Section Selector -->
+      <div class="mb-4">
+        <div class="btn-group w-100" role="group">
+          <button
+            type="button"
+            class="btn btn-outline-light"
+            (click)="selectSection('user_management')"
+            [class.active]="selectedSection === 'user_management'"
+            *ngIf="this.role == 'Super Admin'"
+          >
+            User Management
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-light"
+            (click)="selectSection('group_management')"
+            [class.active]="selectedSection === 'group_management'"
+          >
+            Group Management
+          </button>
+        </div>
+      </div>
+
+      <!-- User Management Section -->
+      <app-user-manegement
+        *ngIf="selectedSection === 'user_management'"
+      ></app-user-manegement>
+
+      <!-- Group Management Section -->
+      <app-group-management
+        *ngIf="selectedSection === 'group_management'"
+      ></app-group-management>
+    </div>
+  </div>
+</div>

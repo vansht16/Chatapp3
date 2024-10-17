@@ -1,0 +1,215 @@
+/* Styling for the group sidebar */
+#group-sidebar {
+  width: 10%;
+  background-color: rgb(170, 170, 170);
+  border: 2px solid #000000;
+  border-radius: 1px;
+  
+
+  
+}
+
+/* Styling for the channel sidebar */
+#channel-sidebar {
+  width: 20%;
+  background-color: rgb(170, 170, 170);
+  border: 2px solid #000000;
+  border-radius: 1px;
+  border-right: 0px;
+ 
+ 
+}
+
+/* Styling for the chat area */
+#chat-area {
+  width: 65%;
+  border: 2px solid #000000;
+  border-radius: 1px;
+}
+
+/* Styling for chat messages */
+.message-row {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.message-row.left {
+  justify-content: flex-start;
+  max-width: 100%;
+}
+
+.message-row.right {
+  justify-content: flex-end;
+  max-width: 100%;
+}
+
+.message-info {
+  display: flex;
+  align-items: center; /* Align username and profile image in the same row */
+  margin-right: 10px;
+}
+
+.message-info small {
+  font-size: 12px;
+  color: #f00000;
+}
+
+.profile-pic {
+  margin-left: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+}
+
+.image-preview img {
+  max-width: 150px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.message-bubble {
+  max-width: 100%; /* Allow bubble to take full width but controlled by the row */
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #fff;
+  box-shadow: 0px 0px 2px rgba(255, 14, 14, 0.2);
+  word-wrap: break-word; /* Ensure long words break properly */
+  overflow-wrap: break-word;
+}
+
+.message-bubble.mine {
+  background-color: #dcf8c6;
+}
+
+.message-time {
+  font-size: 12px;
+  color: #999;
+  margin-top: 5px;
+}
+
+.text-center.text-muted em {
+  display: block;
+  margin: 10px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Input and Send Button Styling */
+#chat-input input {
+  border: none;
+  padding: 10px 15px;
+}
+
+#chat-input .input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#chat-input .form-control:focus {
+  box-shadow: none;
+}
+
+#chat-input .btn-primary {
+  padding: 10px 20px;
+  border: none;
+}
+
+/* Hover and Active State Styling */
+.nav-link {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  background-color: rgb(0, 118, 253);
+  color: #fff;
+  border-radius: 4px;
+}
+
+.nav-link:hover {
+  background-color: rgba(173, 208, 247, 0.6);
+}
+
+/* Custom context menu styling */
+.custom-context-menu {
+  position: absolute;
+  z-index: 1000;
+  background-color: #006dfc;
+  border: 1px solid #444;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(255, 61, 61, 0.5);
+  display: none;
+}
+
+.custom-context-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-context-menu ul li {
+  padding: 10px 20px;
+  color: red;
+  cursor: pointer;
+}
+
+.custom-context-menu ul li:hover {
+  background-color: red;
+  color: #ffffff;
+}
+
+/* Highlight the selected group */
+.nav-item.bg-primary a {
+  background-color: #007bff !important; /* Bootstrap's 'primary' color */
+  color: #fff !important;
+}
+
+/* Highlight the selected channel */
+.nav-item.bg-info a {
+  background-color: rgb(0, 118, 253) !important; /* Bootstrap's 'info' color */
+  color: #fff !important;
+}
+
+.message-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message-info small {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.system-message {
+  font-style: italic;
+  color: #888;
+  margin: 10px 0;
+}
+
+/* Ensure the request to join container takes up the full height */
+.request-to-join-container {
+  height: 100% !important; /* Full height of the available space */
+  justify-content: center; /* Vertically center the content */
+  align-items: center; /* Horizontally center the content */
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Stack the buttons vertically */
+}

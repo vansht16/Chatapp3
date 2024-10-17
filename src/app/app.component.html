@@ -1,0 +1,46 @@
+<main class="container-fluid custom-background" style="height: 100vh;">
+  <div class="row h-100">
+    
+    <!-- Sidebar (left) -->
+    <nav class="col-md-3 col-lg-2 custom-sidebar d-flex flex-column align-items-start p-3">
+      <a class="navbar-brand text-light mb-4" href="#">Let's Chat</a>
+
+      <ul class="nav flex-column w-100">
+        <!-- Chat Link -->
+        <li class="nav-item" *ngIf="role != null">
+          <a class="nav-link custom-link" routerLink="/chat" routerLinkActive="active">Group Chat</a>
+        </li>
+
+        <!-- Explore Link -->
+        <li class="nav-item" *ngIf="role != null">
+          <a class="nav-link custom-link" routerLink="/explore" routerLinkActive="active">Join Groups</a>
+        </li>
+
+        <!-- Profile Link -->
+        <li class="nav-item" *ngIf="role != null">
+          <a class="nav-link custom-link" routerLink="/profile" routerLinkActive="active">Edit Profile</a>
+        </li>
+
+        <!-- Admin Link (Group Admin or Super Admin) -->
+        <li class="nav-item" *ngIf="role == 'Group Admin' || role == 'Super Admin'">
+          <a class="nav-link custom-link" routerLink="/admin" routerLinkActive="active">Manage Groups</a>
+        </li>
+
+        <!-- Logout Link (Red) -->
+        <li class="nav-item mt-auto" *ngIf="role != null">
+          <a
+            class="nav-link custom-link text-danger"
+            (click)="logout()"
+            style="cursor: pointer; font-weight: bold;"
+            >Logout</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="col-md-9 col-lg-10 p-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</main>

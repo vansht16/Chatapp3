@@ -1,0 +1,79 @@
+/* Search Bar */
+.input-group .form-control {
+  color: #fff;
+  background-color: #036cd6;
+  border: 1px solid #0067c2;
+  border-radius: 20px;
+  padding: 8px 12px;
+}
+
+.input-group .form-control:focus {
+  box-shadow: 0 0 5px #1491ff;
+}
+
+.input-group .form-control::placeholder {
+  color: #adb5bd;
+  opacity: 1;
+}
+
+/* Group List */
+.list-group-item {
+  border: none;
+  border-radius: 0.5rem;
+  margin-bottom: 8px;
+}
+
+.list-group-item h5 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.list-group-item small {
+  color: #adb5bd;
+}
+
+/* Buttons */
+.btn {
+  cursor: pointer;
+}
+
+.btn-success {
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+
+.btn-sm {
+  padding: 4px 8px;
+}
+
+button.btn {
+  border-radius: 0.5rem;
+}
+
+button.btn-outline-success {
+  border-radius: 0.5rem;
+  color: #38f563;
+  border-color: #38f563;
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+button.btn-outline-success:hover {
+  background-color: #38f563;
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+/* New Group Input Field Styling */
+input.form-control.bg-transparent.text-white {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #6c757d;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: normal;
+  height: normal;
+}

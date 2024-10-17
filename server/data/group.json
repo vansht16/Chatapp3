@@ -1,0 +1,30 @@
+[
+  {
+    "id": "group-kbkhbvi7rwb",
+    "groupname": "test",
+    "adminId": "user-001",
+    "channels": [
+      "6711133da7ca6a3e7ffb5743"
+    ],
+    "users": [
+      "user-001",
+      "user-zvmfzwrcx7p"
+    ],
+    "pendingUsers": [],
+    "reported_users": []
+  },
+  {
+    "id": "group-iyzfqw1jjzf",
+    "groupname": "new",
+    "adminId": "user-001",
+    "channels": [
+      "6711315ba7ca6a3e7ffb574a"
+    ],
+    "users": [
+      "user-001",
+      "user-zvmfzwrcx7p"
+    ],
+    "pendingUsers": [],
+    "reported_users": []
+  }
+]

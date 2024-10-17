@@ -1,0 +1,59 @@
+/* Adjust the select box to show all text */
+.custom-select {
+  width: 200px;
+  padding: 4px 12px;
+  border-radius: 0.25rem;
+  background-color: #167be0;
+  color: #ffffff;
+  border: 1px solid #6c757d;
+}
+
+/* Styling adjustments for buttons */
+.btn-sm {
+  padding: 4px 12px;
+}
+
+/* Other styles */
+.group-header {
+  background-color: #0080ff;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.nav-tabs .nav-link {
+  padding: 6px 10px;
+  border-radius: 0.25rem;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.interest-user {
+  display: flex;
+  align-items: center;
+}
+
+.user-member {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+/* Badge Styling */
+.badge-join {
+  background-color: #17a2b8; /* Info color */
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: 8px;
+  font-size: 0.75rem;
+  display: inline-block; /* Ensure badge stays in line */
+  align-self: center; /* Ensure badge aligns with the text */
+}

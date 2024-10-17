@@ -1,0 +1,44 @@
+/* Custom sidebar colors */
+.custom-sidebar {
+  background-color: #34af49; /* Dark background for sidebar */
+  color: rgb(253, 171, 171);           /* Text color */
+}
+
+/* Custom background for the entire page */
+.custom-background {
+  background-color: rgb(170, 170, 170); /* Light background color for main content area */
+}
+
+/* Sidebar link styles */
+.custom-link {
+  color: #000000; /* White text for links */
+  padding: 10px 15px;
+  display: block;
+  width: 100%;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover and active states for sidebar links */
+.custom-link:hover,
+.custom-link.active {
+  background-color: #007bff; /* Primary blue when active/hover */
+  color: #00ff15;
+}
+
+/* Navbar brand style (Let's Chat) */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #911919;
+}
+
+/* Adjust logout button placement */
+.nav-item.mt-auto {
+  margin-top: auto;
+}
+
+/* Adjust the padding of the main content */
+.p-4 {
+  padding: 20px;
+}

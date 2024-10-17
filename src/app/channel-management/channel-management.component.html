@@ -1,0 +1,95 @@
+<div>
+  <div
+    *ngFor="let channel of selectedGroup.channels; let i = index"
+    class="channel-item d-flex justify-content-between align-items-center mb-3"
+  >
+    <!-- Channel Name Input Field -->
+    <div class="flex-grow-1">
+      <input
+        type="text"
+        class="form-control bg-transparent text-black border-none p-0"
+        [(ngModel)]="channels[i].name"
+        name="channels[i].name"
+        [readonly]="!isEditing[i]"
+        [ngClass]="{ editable: isEditing[i] }"
+        placeholder="Channel name"
+        #channelInput
+      />
+    </div>
+
+    <!-- Button Section -->
+    <div class="d-flex button-group ms-2">
+      <button
+        class="btn btn-outline-secondary btn-sm me-2"
+        *ngIf="!isEditing[i]"
+        (click)="manageChannel(channels[i])"
+      >
+        Manage Channel
+      </button>
+      <button
+        class="btn btn-outline-secondary btn-sm me-2"
+        *ngIf="!isEditing[i]"
+        (click)="editChannel(i, channelInput)"
+      >
+        Edit
+      </button>
+      <button
+        class="btn btn-outline-success btn-sm me-2"
+        *ngIf="isEditing[i]"
+        (click)="saveChannelName(i)"
+      >
+        Save
+      </button>
+      <button
+        class="btn btn-outline-danger btn-sm me-2"
+        *ngIf="isEditing[i]"
+        (click)="cancelEdit(i)"
+      >
+        Cancel
+      </button>
+      <button
+        class="btn btn-outline-danger btn-sm"
+        *ngIf="!isEditing[i]"
+        (click)="deleteChannel(selectedGroup, channels[i], i)"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+
+  <!-- New Channel Input Field -->
+  <div
+    *ngIf="addingChannel"
+    class="d-flex justify-content-between align-items-center mb-3"
+    (click)="AddfocusInputField($event)"
+  >
+    <div>
+      <input
+        type="text"
+        #channelNameInput
+        class="form-control bg-transparent text-black border-none p-0"
+        placeholder="Enter new channel name..."
+        [(ngModel)]="newChannelName"
+        (keyup.enter)="saveChannel()"
+      />
+    </div>
+    <div>
+      <button
+        class="btn btn-outline-success btn-sm me-2"
+        (click)="saveChannel(); $event.stopPropagation()"
+      >
+        Create
+      </button>
+      <button
+        class="btn btn-outline-danger btn-sm"
+        (click)="cancelChannel(); $event.stopPropagation()"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+
+  <button class="btn btn-success w-100" (click)="startAddingChannel()">
+    Add New Channel
+  </button>
+</div>

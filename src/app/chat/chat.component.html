@@ -1,0 +1,265 @@
+<div
+  class="container py-5 d-flex justify-content-center align-items-center p-0"
+>
+  <div
+    class="card text-black background-color: rgb(170, 170, 170)"
+    style="
+      border-radius: 1rem;
+      width: 100%;
+      max-width: 12000px;
+      border: none;
+      overflow: hidden;
+    "
+  >
+    <div class="card-body d-flex p-100000" style="height: 80vh" >
+      <!-- Sidebar for Groups -->
+      <div class="background-color: rgb(170, 170, 170) text-black p-3 pt-0 overflow-auto" id="group-sidebar">
+        <h5 class="text-center background-color: rgb(170, 170, 170) pt-3">Groups</h5>
+        <ul class="nav flex-column">
+          <li
+            class="nav-item"
+            *ngFor="let group of groups"
+            [ngClass]="{ 'bg-primary': group.id === selectedGroup?.id }"
+            style="border-radius: 5px"
+          >
+            <a
+              class="nav-link text-black"
+              (click)="selectGroup(group.id)"
+              [class.active]="group.id === selectedGroup?.id"
+            >
+              {{ group.groupname }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sidebar for Channels -->
+      <div
+        class="background-color: rgb(170, 170, 170) text-black p-3 pt-0 overflow-auto"
+        id="channel-sidebar"
+      >
+        <h5 class="text-center pt-3 background-color: rgb(170, 170, 170)">Channels</h5>
+        <ul class="nav flex-column">
+          <li
+            class="nav-item"
+            *ngFor="let channel of channels"
+            [ngClass]="{ 'bg-info': channel._id === selectedChannel?._id }"
+            style="border-radius: 5px"
+          >
+            <a
+              class="nav-link text-black"
+              (click)="selectChannel(channel)"
+              [class.active]="channel._id === selectedChannel?._id"
+            >
+              {{ channel.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Main Chat Area -->
+      <div
+        class="flex-grow-1 d-flex flex-column bg-light text-dark"
+        id="chat-area"
+      >
+        <div class="p-3 border-bottom bg-dark text-white">
+          <h5>
+            {{ selectedGroup?.groupname || "Select a group" }}
+            {{ selectedChannel ? " - " + selectedChannel.name : "" }}
+          </h5>
+        </div>
+
+        <div class="flex-grow-1 p-3 overflow-auto">
+          <!-- Check if a group and a channel are selected -->
+          <div
+            *ngIf="selectedGroup && selectedChannel; else emptyState"
+            style="height: 100%"
+          >
+            <!-- Chat Messages -->
+            <div *ngIf="isUserInChannel; else requestToJoin">
+              <div *ngFor="let message of chatMessages; let i = index">
+                <!-- Show Date Divider -->
+                <div
+                  *ngIf="
+                    i === 0 ||
+                    !isSameDay(chatMessages[i - 1].timestamp, message.timestamp)
+                  "
+                  class="text-center text-muted"
+                >
+                  <em>{{ message.timestamp | date : "EEE, MMM d" }}</em>
+                </div>
+
+                <!-- System Message in the center -->
+                <div *ngIf="message.system" class="system-message text-center">
+                  <em>{{ message.message }}</em>
+                </div>
+
+                <!-- Other User's Message -->
+                <div
+                  *ngIf="!message.system && message.userId !== currentUser.id"
+                  class="message-row left"
+                >
+                  <div class="message-info">
+                    <img
+                      class="profile-pic"
+                      [src]="
+                        message.profile_img_path
+                          ? 'http://localhost:3000/images/' +
+                            message.profile_img_path
+                          : 'assets/default-profile.jpg'
+                      "
+                      alt="User Image"
+                    />
+                    <small>{{ message.username }}</small>
+                  </div>
+
+                  <!-- Message and Image -->
+                  <div class="message-content">
+                    <!-- If message exists, display it in a bubble -->
+                    <div *ngIf="message.message.trim()" class="message-bubble">
+                      {{ message.message }}
+                    </div>
+
+                    <!-- If image exists, display it outside of the bubble -->
+                    <div *ngIf="message.imageUrl" class="image-preview">
+                      <img
+                        [src]="message.imageUrl"
+                        alt="Sent Image"
+                        class="img-thumbnail me-2"
+                        style="max-width: 150px"
+                      />
+                    </div>
+                    <div class="message-time">
+                      {{ message.timestamp | date : "h:mm a" }}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Current User's Message -->
+                <div
+                  *ngIf="!message.system && message.userId === currentUser.id"
+                  class="message-row right"
+                >
+                  <div class="message-content">
+                    <!-- If message exists, display it in a bubble -->
+                    <div
+                      *ngIf="message.message.trim()"
+                      class="message-bubble mine"
+                    >
+                      {{ message.message }}
+                    </div>
+
+                    <!-- If image exists, display it outside of the bubble -->
+                    <div *ngIf="message.imageUrl" class="image-preview">
+                      <img
+                        [src]="message.imageUrl"
+                        alt="Sent Image"
+                        class="img-thumbnail me-2"
+                        style="max-width: 150px"
+                      />
+                    </div>
+                    <div class="message-time">
+                      {{ message.timestamp | date : "h:mm a" }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 'Request to Join' button if user is not in the channel -->
+            <ng-template #requestToJoin>
+              <div
+                class="d-flex justify-content-center align-items-center flex-column request-to-join-container"
+              >
+                <button
+                  *ngIf="!isUserPendingApproval"
+                  class="btn btn-primary"
+                  (click)="requestToJoinChannel()"
+                >
+                  Request to Join Channel
+                </button>
+                <button
+                  *ngIf="isUserPendingApproval"
+                  class="btn btn-secondary"
+                  disabled
+                >
+                  Waiting for Approval
+                </button>
+              </div>
+            </ng-template>
+          </div>
+
+          <!-- Empty state if no group or channel is selected -->
+          <ng-template #emptyState>
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <p>Select a group and channel to start chatting.</p>
+            </div>
+          </ng-template>
+        </div>
+
+        <!-- Message Input Section -->
+        <div *ngIf="isUserInChannel" class="p-3 border-top bg-dark">
+          <div class="input-group">
+            <input
+              type="text"
+              [(ngModel)]="messageContent"
+              class="form-control rounded-pill"
+              placeholder="Type a message..."
+              style="border-right: none"
+            />
+
+            <!-- Image Upload Button (Icon) -->
+            <div class="input-group-append mx-2">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                (click)="triggerFileUpload()"
+              >
+                <i
+                  class="fa-regular fa-image"
+                  style="font-size: 1.5rem; color: white"
+                ></i>
+              </button>
+            </div>
+
+            <!-- Hidden File Input -->
+            <input
+              type="file"
+              #fileInput
+              class="d-none"
+              accept="image/*"
+              name="selectedImage"
+              (change)="onImageSelected($event)"
+            />
+
+            <button
+              class="btn btn-primary rounded-pill"
+              (click)="sendMessage()"
+              type="button"
+              style="
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                margin-left: 5px;
+              "
+            >
+              Send
+            </button>
+          </div>
+
+          <!-- Image Preview -->
+          <div *ngIf="imagePreview">
+            <p>Selected Image:</p>
+            <img
+              [src]="imagePreview"
+              alt="Image preview"
+              class="img-thumbnail me-2"
+              style="max-width: 150px"
+            />
+            <button class="btn btn-danger" (click)="clearImage()">
+              Remove Image
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

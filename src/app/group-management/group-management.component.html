@@ -1,0 +1,88 @@
+<div>
+  <!-- Search Bar -->
+  <div *ngIf="!selectedGroup" class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control bg-dark text-white"
+      placeholder="Search groups..."
+      aria-label="Search groups"
+      (input)="updateSearchQuery($event)"
+    />
+  </div>
+
+  <!-- Group List -->
+  <ul *ngIf="!selectedGroup" class="list-group">
+    <li
+      *ngFor="let group of filteredGroups"
+      class="list-group-item d-flex justify-content-between align-items-center bg-secondary text-white mb-3"
+    >
+      <div>
+        <h5>{{ group.groupname }}</h5>
+        <small
+          >Channels: {{ group.channels.length }} | Users:
+          {{ group.users.length }}</small
+        >
+      </div>
+      <div>
+        <button
+          class="btn btn-outline-light btn-sm"
+          (click)="selectGroup(group)"
+        >
+          Manage Group
+        </button>
+        <button
+          class="btn btn-outline-danger btn-sm ms-2"
+          (click)="deleteGroup(group)"
+        >
+          Delete
+        </button>
+      </div>
+    </li>
+
+    <!-- New Group Input Field -->
+    <li
+      *ngIf="addingGroup"
+      class="list-group-item d-flex justify-content-between align-items-center bg-secondary text-white mb-3"
+      (click)="focusInputField($event)"
+    >
+      <div>
+        <input
+          type="text"
+          #groupNameInput
+          class="form-control bg-transparent text-white border-none p-0"
+          placeholder="Enter group name..."
+          [(ngModel)]="newGroupName"
+          (keyup.enter)="saveGroup()"
+        />
+        <small>Channels: 0 | Users: 0</small>
+      </div>
+      <div>
+        <button
+          class="btn btn-outline-success btn-sm me-2"
+          (click)="saveGroup(); $event.stopPropagation()"
+        >
+          Create
+        </button>
+        <button
+          class="btn btn-outline-danger btn-sm"
+          (click)="cancelGroup(); $event.stopPropagation()"
+        >
+          Cancel
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <!-- Add New Group Button -->
+  <div *ngIf="!selectedGroup && !addingGroup" class="mt-4">
+    <button class="btn btn-success w-100" (click)="startAddingGroup()">
+      Add New Group
+    </button>
+  </div>
+
+  <!-- Group Detail Section -->
+  <app-group-detail
+    *ngIf="selectedGroup"
+    [selectedGroup]="selectedGroup"
+  ></app-group-detail>
+</div>

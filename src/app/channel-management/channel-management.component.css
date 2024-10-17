@@ -1,0 +1,35 @@
+.d-flex {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap; /* Prevents wrapping of flex items */
+}
+
+.channel-item .form-control {
+  flex-grow: 1; /* Ensures the input field takes up remaining space */
+}
+
+.button-group {
+  display: flex;
+  gap: 8px; /* Adds space between buttons */
+  align-items: center;
+  flex-wrap: nowrap; /* Ensures buttons stay in the same row */
+}
+
+.btn-sm {
+  padding: 4px 8px;
+}
+
+.d-flex .form-control {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: normal;
+}
+
+input.form-control.bg-transparent.text-white.editable {
+  opacity: 1; /* Full opacity when editing */
+}

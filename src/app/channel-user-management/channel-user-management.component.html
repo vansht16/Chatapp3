@@ -1,0 +1,44 @@
+<div>
+  <!-- Users Interested in Joining -->
+  <div class="interested-users-section p-0 mt-4 mb-3">
+    <div
+      *ngFor="let interest of interestedUsers"
+      class="d-flex justify-content-between align-items-center mb-3 interest-user"
+    >
+      <div class="d-flex align-items-center">
+        <span>{{ interest.username }}</span>
+        <span class="badge badge-join ms-2">Wants to Join</span>
+      </div>
+      <div class="btn-container">
+        <button
+          class="btn btn-outline-success btn-sm me-2"
+          (click)="approveUser(interest)"
+        >
+          Approve
+        </button>
+        <button
+          class="btn btn-outline-danger btn-sm"
+          (click)="declineUser(interest)"
+        >
+          Decline
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Existing Users in the Channel -->
+  <div
+    *ngFor="let user of selectedChannel.users"
+    class="d-flex justify-content-between align-items-center mb-3 user-member"
+  >
+    <span>{{ user.username }}</span>
+    <div class="btn-container">
+      <button
+        class="btn btn-outline-warning btn-sm me-2"
+        (click)="banUser(user)"
+      >
+        Ban From Channel
+      </button>
+    </div>
+  </div>
+</div>

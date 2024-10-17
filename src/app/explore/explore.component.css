@@ -1,0 +1,40 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container {
+  padding: 0;
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+.list-group-item {
+  background-color: #237be0 !important;
+  border-radius: 8px;
+}
+
+.btn-outline-light {
+  color: #fff;
+  border-color: #fff;
+}
+
+.text-muted {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+h5,
+p,
+small {
+  margin: 0; /* Remove default margins for tighter alignment */
+}
+
+.btn-outline-light:hover {
+  color: rgb(59, 233, 204);
+}

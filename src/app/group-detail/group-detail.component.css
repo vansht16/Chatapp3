@@ -1,0 +1,87 @@
+/* Full Page Styling */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main-full-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1000vh; /* Full height */
+  width: 1000vw; /* Full width */
+  background-color: #1dd3b5; /* Background similar to login */
+}
+
+/* Button Styling */
+.btn,
+.nav-btn {
+  cursor: pointer;
+}
+
+.btn-success {
+  padding: 12px 24px;
+  border-radius: 30px;
+  background-color: #61dafb; /* Similar to login page button */
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #21a1f1;
+}
+
+/* Sub Tab Navigation for Group Management */
+.nav-tabs-sub {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 16px;
+}
+
+.nav-tabs-sub .nav-link {
+  color: #0078f0;
+  border-radius: 30px;
+  background-color: transparent;
+  margin-right: 8px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: 1px solid #48be11;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-tabs-sub .nav-link.active {
+  background-color: #0984ff;
+  color: white;
+  border-color: #83cf20;
+}
+
+/* Group Management Section */
+#group-management-section {
+  margin-top: 1rem;
+  width: 100%; /* Full width */
+}
+
+/* Input Field Styling */
+input.form-control.bg-transparent.text-white {
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: normal;
+  height: 3rem;
+  padding: 0.5rem;
+  width: 100%; /* Full width for better layout */
+}
+
+/* Placeholder Styling */
+input.form-control::placeholder {
+  color: #adb5bd;
+  opacity: 0.8;
+}

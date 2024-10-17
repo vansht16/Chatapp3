@@ -1,0 +1,66 @@
+<section>
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-4">
+        <div class="card bg-light text-black" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center">
+            <form class="mb-md-5 mt-md-4 pb-5" (ngSubmit)="onSubmit()">
+              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <p class="text-muted mb-5">Enter your credentials to login!</p>
+
+              <!-- Username Input -->
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg bg-light text-dark"
+                  id="floatingInput"
+                  placeholder="username"
+                  [(ngModel)]="loginData.username"
+                  name="username"
+                  required
+                />
+                <label for="floatingInput">Username</label>
+              </div>
+
+              <!-- Password Input -->
+              <div class="form-floating mb-4">
+                <input
+                  type="password"
+                  class="form-control form-control-lg bg-light text-dark"
+                  id="floatingInputPassword"
+                  placeholder="Password"
+                  [(ngModel)]="loginData.password"
+                  name="password"
+                  required
+                />
+                <label for="floatingInputPassword" class="text-black">Password</label>
+              </div>
+
+              <!-- Login Button -->
+              <button
+                class="btn btn-outline-light btn-dark px-5"
+                type="submit"
+                style="background-color: #4CAF50; color: white; padding: 15px; font-size: 1.2rem; border-radius: 0.5rem; width: 100%; border: none;"
+              >
+                Login
+              </button>
+            </form>
+
+            <!-- Error Message -->
+            <div *ngIf="errorMessage" class="alert alert-danger mt-4" style="border-radius: 0.5rem;">
+              {{ errorMessage }}
+            </div>
+
+            <!-- Sign Up Link -->
+            <div class="mt-4">
+              <p style="font-size: 0.9rem; color: #555;">
+                Don't have an account? 
+                <a routerLink="/signup" class="fw-bold" style="color: #4CAF50;">Sign Up here</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

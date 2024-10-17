@@ -1,0 +1,23 @@
+.card-body {
+  overflow-y: auto; /* Allows scrolling if the content overflows */
+}
+
+.list-group-item {
+  border: none; /* Removes the default borders */
+  margin-bottom: 10px; /* Adds space between the list items */
+}
+
+.btn-outline-light {
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: #5cc5c5;
+}
+
+.form-control[readonly] {
+  background-color: #5ce4b0; /* Darker background for readonly fields */
+  opacity: 1;
+}
